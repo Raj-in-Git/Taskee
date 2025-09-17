@@ -1,0 +1,49 @@
+/* style.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Table styling */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    font-family: Arial, sans-serif;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    vertical-align: top; /* Align text to top */
+    word-wrap: break-word; /* Wrap long text */
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+    text-align: left;
+}
+
+td input[type="text"], td input[type="datetime-local"] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 4px;
+}
+
+tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+/* Optional: make long task details scrollable */
+td.task-details {
+    max-width: 200px;
+    white-space: pre-wrap; /* preserves line breaks */
+    overflow-wrap: break-word;
+}
+
+input {
+    border: none;
+    outline: none; /* removes the focus outline */
+    background-color: #f8f9fa;
+
+}

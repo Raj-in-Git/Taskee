@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Taskee</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Taskee</h1>
+    <h3>Add Task</h3>
+    <form action="{{ url_for('add_task') }}" method="post">
+        <input type="text" name="taskname" placeholder="Project Name" required>
+        <input type="text" name="details" placeholder="Details" required>
+        <button type="submit">Add</button>
+    </form>
+    <h3>Task List</h3>
+        {% if tasks %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Created Time</th>
+                    <th>Project Name</th>
+                    <th>Task Details</th>
+                    <th>Last Updated</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                {% for task in tasks  %}
+                <tr>
+                    <form action="{{ url_for('update_task', id=task.id) }}" method="post" style="display:block">
+                    <td><input type="datetime" name="created date" value="{{task.created_at}}"></td>
+                    <td><input type="text" name="taskname" value="{{ task.taskname }}"></td>
+                    <td><input type="text" name="details" value="{{ task.details }}"></td>
+                    <td><input type="datetime" name="updated date" value="{{task.updated_at}}"></td>
+                    <td><button type="submit">Update</button></td>
+                    <td><button><a href="{{ url_for('delete_task', id=task.id) }}">Delete</a></button></td>
+                    </form>
+                </tr>
+                {% endfor %}
+            </tbody> 
+        </table>
+        {% else %}
+        <p>No Tasks available.</p>
+        {% endif %}
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
